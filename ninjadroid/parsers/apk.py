@@ -40,7 +40,7 @@ class APK(File, APKInterface):
         self._dex_files = []  # type: List[Dex]
         self._extract_and_set_entries(string_processing)
 
-        if len(self._files) == 0 or self._cert is None:
+        if len(self._files) == 0 or not hasattr(self, "_cert") or self._cert is None:
             raise APKParsingError
 
         self._app_name = Aapt.get_app_name(filepath)
